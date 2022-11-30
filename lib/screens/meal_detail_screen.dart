@@ -53,36 +53,42 @@ class MealDetailScreen extends StatelessWidget {
               ),
             ),
             buildSectionTitle(context, 'Ingredients'),
-            buildContainer(ListView.builder(
-              itemBuilder: (ctx, index) => Card(
-                color: Colors.amber,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: Text(selectedMeal.ingredients[index]),
-                ),
-              ),
-              itemCount: selectedMeal.ingredients.length,
-            )),
-            buildSectionTitle(context, 'Steps'),
-            buildContainer(ListView.builder(
-              itemBuilder: (ctx, index) => Column(
-                children: [
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundColor: Colors.pink,
-                      child: Text('# ${index + 1}'),
-                    ),
-                    title: Text(
-                      selectedMeal.steps[index],
-                      style: TextStyle(fontSize: 15),
-                    ),
+            Container(
+              width: double.infinity,
+              child: buildContainer(ListView.builder(
+                itemBuilder: (ctx, index) => Card(
+                  color: Colors.amber,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                    child: Text(selectedMeal.ingredients[index]),
                   ),
-                  Divider(),
-                ],
-              ),
-              itemCount: selectedMeal.steps.length,
-            )),
+                ),
+                itemCount: selectedMeal.ingredients.length,
+              )),
+            ),
+            buildSectionTitle(context, 'Steps'),
+            Container(
+              width: double.infinity,
+              child: buildContainer(ListView.builder(
+                itemBuilder: (ctx, index) => Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(
+                        backgroundColor: Colors.pink,
+                        child: Text('# ${index + 1}'),
+                      ),
+                      title: Text(
+                        selectedMeal.steps[index],
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ),
+                    Divider(),
+                  ],
+                ),
+                itemCount: selectedMeal.steps.length,
+              )),
+            ),
           ],
         ),
       ),
